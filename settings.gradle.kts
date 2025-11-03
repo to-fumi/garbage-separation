@@ -1,4 +1,4 @@
-rootProject.name = "garbage"
+rootProject.name = "com.toyokawa.garbage"
 
 dependencyResolutionManagement {
     repositories {
