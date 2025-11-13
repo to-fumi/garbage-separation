@@ -1,7 +1,10 @@
 package com.toyokawa
 
 import com.toyokawa.plugings.configureCORS
+import com.toyokawa.plugings.configureContentNegotiation
+import com.toyokawa.plugings.configureRequestValidation
 import com.toyokawa.plugings.configureRouting
+import com.toyokawa.plugings.configureStatus
 import io.ktor.server.application.Application
 import io.ktor.server.netty.EngineMain
 
@@ -12,4 +15,7 @@ fun main(args: Array<String>) {
 fun Application.module() {
     configureCORS()
     configureRouting()
+    configureRequestValidation()
+    configureStatus()
+    configureContentNegotiation()
 }

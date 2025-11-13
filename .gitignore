@@ -27,5 +27,12 @@ replay_pid*
 .kotlin/
 
 .gradle
+.gradle/*
+build/*
+build.*
 
 .idea
+
+# Claude Code
+CLAUDE.md
+.claude

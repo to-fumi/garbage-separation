@@ -1,5 +1,6 @@
 package com.toyokawa.controllers
 
+import io.ktor.http.HttpStatusCode
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
@@ -15,9 +16,13 @@ fun Route.AdminRoute() {
         get {
             call.respondText("Routing for Operating from Admins")
             logger.info("Calling garbage routing by admin")
+            if (call.queryParameters["search"]!!.isNotEmpty()) {
+                call.respondText("Searching data with word ${call.queryParameters["search"]}")
+            }
         }
         post {
             call.respondText("Posting Garbage by Administrators")
+            call.response.status(HttpStatusCode.Created)
         }
         put("/{id}") {
             call.respondText("Putting Garbage by Administrators with id = ${call.parameters["id"]}")
