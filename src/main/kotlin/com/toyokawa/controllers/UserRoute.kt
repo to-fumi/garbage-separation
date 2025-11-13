@@ -1,7 +1,7 @@
 package com.toyokawa.controllers
 
+import io.ktor.server.response.respond
 import io.ktor.server.response.respondRedirect
-import io.ktor.server.response.respondText
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
 import io.ktor.server.routing.route
@@ -18,8 +18,8 @@ fun Route.UserRoute() {
 
     route("/garbage") {
         get {
-            call.respondText("Hello World!")
-            logger.info("Calling garbage routing by user")
+            val garbages = listOf("burnable", "non-burnable")
+            call.respond(garbages)
         }
     }
 }
