@@ -1,8 +1,15 @@
 ktor:
-    application:
-        modules:
-            - com.toyokawa.ApplicationKt.module
-    deployment:
-        port: $PORT:8080
-    development: $?KTOR_DEV
-    environment: $?KTOR_ENV
+  application:
+    modules:
+      - com.toyokawa.ApplicationKt.module
+  deployment:
+    host: $HOST:127.0.0.1
+    port: $PORT:8080
+envConfig:
+  env:
+    $?KTOR_ENV
+  database:
+    user: $DB_USER
+    password: $DB_PASSWORD
+    url: $DB_URL
+    className: $DB_DRIVER

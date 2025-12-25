@@ -31,6 +31,9 @@ replay_pid*
 build/*
 build.*
 
+.env
+.envrc
+
 .idea
 
 # Claude Code

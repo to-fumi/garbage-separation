@@ -1,7 +1,9 @@
 package com.toyokawa
 
+import com.toyokawa.plugings.configureAuthentication
 import com.toyokawa.plugings.configureCORS
 import com.toyokawa.plugings.configureContentNegotiation
+import com.toyokawa.plugings.configureDatabases
 import com.toyokawa.plugings.configureRequestValidation
 import com.toyokawa.plugings.configureRouting
 import com.toyokawa.plugings.configureStatus
@@ -13,9 +15,11 @@ fun main(args: Array<String>) {
 }
 
 fun Application.module() {
-    configureCORS()
-    configureRouting()
-    configureRequestValidation()
-    configureStatus()
+    configureAuthentication()
     configureContentNegotiation()
+    configureCORS()
+    configureDatabases()
+    configureRequestValidation()
+    configureRouting()
+    configureStatus()
 }
