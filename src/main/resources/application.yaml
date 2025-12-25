@@ -5,6 +5,10 @@ ktor:
   deployment:
     host: $HOST:127.0.0.1
     port: $PORT:8080
+    watch:
+      - classes
+      - resources
+  development: $?DEV_MODE:false
 envConfig:
   env:
     $?KTOR_ENV

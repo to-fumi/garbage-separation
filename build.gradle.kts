@@ -41,5 +41,6 @@ dependencies {
     implementation(libs.opentelemetry.sdk)
 
     testImplementation(libs.ktor.server.test.host)
+    testImplementation(libs.kotlin.test)
     testImplementation(libs.kotlin.test.junit)
 }
