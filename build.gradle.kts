@@ -15,7 +15,6 @@ dependencies {
     implementation(libs.ktor.server.auth)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.netty)
-    implementation(libs.logback.classic)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.config.yaml)
     implementation(libs.ktor.server.cors)
@@ -23,6 +22,7 @@ dependencies {
     implementation(libs.ktor.server.status.pages)
     implementation(libs.ktor.server.request.validation)
     implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.logback.classic)
 
     // Exposed ORM
     implementation("org.jetbrains.exposed:exposed-core:0.46.0")
@@ -35,6 +35,10 @@ dependencies {
 
     // HikariCP connection pooling
     implementation("com.zaxxer:HikariCP:5.1.0")
+
+    // OpenTelemetry
+    implementation(libs.ktor.opentelemetry)
+    implementation(libs.opentelemetry.sdk)
 
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test.junit)
