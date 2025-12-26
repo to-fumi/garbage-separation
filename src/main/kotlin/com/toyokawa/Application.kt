@@ -23,5 +23,7 @@ fun Application.module() {
     configureRequestValidation()
     configureRouting()
     configureStatus()
-    configureOpenTelemetry()
+
+    // TODO: TBD
+    // configureOpenTelemetry()
 }

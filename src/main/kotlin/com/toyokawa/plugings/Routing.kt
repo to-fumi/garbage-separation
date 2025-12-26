@@ -1,7 +1,7 @@
 package com.toyokawa.plugings
 
-import com.toyokawa.controllers.AdminRoute
-import com.toyokawa.controllers.UserRoute
+import com.toyokawa.routes.AdminRoute
+import com.toyokawa.routes.UserRoute
 import io.ktor.server.application.Application
 import io.ktor.server.auth.authenticate
 import io.ktor.server.routing.routing

@@ -1,4 +1,4 @@
-package com.toyokawa.controllers
+package com.toyokawa.routes
 
 import com.toyokawa.domain.CreateGarbageDto
 import com.toyokawa.domain.UpdateGarbageDto

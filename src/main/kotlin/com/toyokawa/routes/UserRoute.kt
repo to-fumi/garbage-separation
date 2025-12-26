@@ -1,4 +1,4 @@
-package com.toyokawa.controllers
+package com.toyokawa.routes
 
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondRedirect

@@ -1,3 +1,5 @@
+import io.github.cdimascio.dotenv.dotenv
+
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.ktor)
@@ -9,6 +11,27 @@ version = "0.0.1"
 
 application {
     mainClass = "io.ktor.server.netty.EngineMain"
+}
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("io.github.cdimascio:dotenv-kotlin:6.5.1")
+    }
+}
+
+tasks.named<JavaExec>("run") {
+    val dotenv = dotenv {
+        directory = rootProject.projectDir.absolutePath
+        filename = ".env"
+        ignoreIfMalformed = true
+        ignoreIfMissing = true
+    }
+    dotenv.entries().forEach { entry ->
+        environment(entry.key, entry.value)
+    }
 }
 
 dependencies {
