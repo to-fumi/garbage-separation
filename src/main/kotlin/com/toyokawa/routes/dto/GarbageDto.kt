@@ -1,6 +1,6 @@
-package com.toyokawa.domain
+package com.toyokawa.routes.dto
 
-import com.toyokawa.domain.LanguageCode
+import com.toyokawa.routes.dto.LanguageCode
 import kotlinx.serialization.Serializable
 
 @Serializable

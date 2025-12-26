@@ -1,7 +1,7 @@
 package com.toyokawa.routes
 
-import com.toyokawa.domain.CreateGarbageDto
-import com.toyokawa.domain.UpdateGarbageDto
+import com.toyokawa.routes.dto.CreateGarbageDto
+import com.toyokawa.routes.dto.UpdateGarbageDto
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.request.receive
 import io.ktor.server.response.respond

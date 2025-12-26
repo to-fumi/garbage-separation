@@ -1,4 +1,4 @@
-package com.toyokawa.domain
+package com.toyokawa.routes.dto
 
 enum class LanguageCode(val code: String) {
     JA("ja"),
