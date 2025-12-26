@@ -13,10 +13,10 @@ import io.ktor.server.routing.put
 import io.ktor.server.routing.route
 import io.ktor.util.logging.KtorSimpleLogger
 
-fun Route.AdminRoute() {
+fun Route.adminRoute() {
     val logger = KtorSimpleLogger(this::class.java.name)
 
-    route("/garbage") {
+    route("/garbages") {
         get {
             val garbages = listOf("burnable", "non-burnable", "oversized")
             call.respond(garbages)

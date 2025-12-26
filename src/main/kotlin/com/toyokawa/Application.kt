@@ -21,9 +21,9 @@ fun Application.module() {
     configureCORS()
     configureDatabases()
     configureRequestValidation()
+    configureKoin()
     configureRouting()
     configureStatus()
-    configureKoin()
 
     // TODO: TBD
     // configureOpenTelemetry()
