@@ -1,5 +1,6 @@
 package com.toyokawa.domain
 
+import com.toyokawa.domain.LanguageCode
 import kotlinx.serialization.Serializable
 
 @Serializable

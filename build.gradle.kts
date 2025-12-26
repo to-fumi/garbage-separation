@@ -47,17 +47,21 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.logback.classic)
 
+    // Koin
+    implementation(libs.ktor.koin)
+    implementation(libs.ktor.koin.logger)
+
     // Exposed ORM
-    implementation("org.jetbrains.exposed:exposed-core:0.46.0")
-    implementation("org.jetbrains.exposed:exposed-dao:0.46.0")
-    implementation("org.jetbrains.exposed:exposed-jdbc:0.46.0")
-    implementation("org.jetbrains.exposed:exposed-java-time:0.46.0")
+    implementation(libs.exposed.core)
+    implementation(libs.exposed.dao)
+    implementation(libs.exposed.jdbc)
+    implementation(libs.exposed.java.time)
 
     // PostgreSQL driver
-    implementation("org.postgresql:postgresql:42.7.1")
+    implementation(libs.postgres)
 
     // HikariCP connection pooling
-    implementation("com.zaxxer:HikariCP:5.1.0")
+    implementation(libs.hikari)
 
     // OpenTelemetry
     implementation(libs.ktor.opentelemetry)
