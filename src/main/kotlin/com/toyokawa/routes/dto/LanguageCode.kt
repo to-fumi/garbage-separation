@@ -5,7 +5,8 @@ enum class LanguageCode(val code: String) {
     EN("en");
 
     companion object {
-        fun fromCode(code: String): LanguageCode? =
+        fun fromCode(code: String): LanguageCode =
             entries.find { it.code == code }
+                ?: throw IllegalArgumentException("Unknown language code $code")
     }
 }

@@ -1,6 +1,6 @@
 package com.toyokawa.routes
 
-import com.toyokawa.domain.usecases.GarbageUsecase
+import com.toyokawa.domain.repositories.IGarbageRepository
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondRedirect
 import io.ktor.server.routing.Route
@@ -12,7 +12,7 @@ import org.koin.ktor.ext.get
 fun Route.userRoute() {
     val logger = KtorSimpleLogger(this::class.java.name)
 
-    val garbageUsecase = get<GarbageUsecase>()
+    val repository = get<IGarbageRepository>()
 
     route("/") {
         get {
@@ -22,7 +22,7 @@ fun Route.userRoute() {
 
     route("/garbages") {
         get {
-            val garbages = garbageUsecase.getAll()
+            val garbages = repository.findAll()
             call.respond(garbages)
         }
     }

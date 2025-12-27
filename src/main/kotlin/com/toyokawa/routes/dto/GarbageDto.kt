@@ -21,6 +21,7 @@ data class CreateGarbageDto(
 
 @Serializable
 data class UpdateGarbageDto(
+    val id: Long,
     val name: String,
     val disposalNotes: String? = null,
     val category: GarbageCategory,
