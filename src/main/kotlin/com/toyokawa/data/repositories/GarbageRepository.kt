@@ -1,6 +1,5 @@
 package com.toyokawa.data.repositories
 
-import com.toyokawa.domain.repositories.IGarbageRepository
 import com.toyokawa.routes.dto.CreateGarbageDto
 import com.toyokawa.routes.dto.GarbageCategory
 import com.toyokawa.routes.dto.GarbageDto

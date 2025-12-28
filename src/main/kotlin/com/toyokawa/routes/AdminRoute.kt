@@ -1,6 +1,6 @@
 package com.toyokawa.routes
 
-import com.toyokawa.domain.repositories.IGarbageRepository
+import com.toyokawa.data.repositories.IGarbageRepository
 import com.toyokawa.routes.dto.CreateGarbageDto
 import com.toyokawa.routes.dto.LanguageCode
 import com.toyokawa.routes.dto.UpdateGarbageDto

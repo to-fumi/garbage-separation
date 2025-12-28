@@ -1,8 +1,7 @@
 package com.toyokawa.plugings
 
 import com.toyokawa.data.repositories.GarbageRepository
-import com.toyokawa.domain.usecases.GarbageUsecase
-import com.toyokawa.domain.repositories.IGarbageRepository
+import com.toyokawa.data.repositories.IGarbageRepository
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
 import org.koin.core.module.dsl.bind
@@ -15,8 +14,6 @@ fun Application.configureKoin() {
 
     val appModule = module {
         singleOf(::GarbageRepository) { bind<IGarbageRepository>() }
-
-        factory { GarbageUsecase() }
     }
 
     install(Koin) {

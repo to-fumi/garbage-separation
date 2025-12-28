@@ -1,4 +1,4 @@
-package com.toyokawa.domain.repositories
+package com.toyokawa.data.repositories
 
 import com.toyokawa.routes.dto.CreateGarbageDto
 import com.toyokawa.routes.dto.GarbageCategory

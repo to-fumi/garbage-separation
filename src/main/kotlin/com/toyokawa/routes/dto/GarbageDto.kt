@@ -1,6 +1,5 @@
 package com.toyokawa.routes.dto
 
-import com.toyokawa.routes.dto.LanguageCode
 import kotlinx.serialization.Serializable
 
 @Serializable

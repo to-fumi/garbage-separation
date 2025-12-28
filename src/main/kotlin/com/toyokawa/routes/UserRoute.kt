@@ -1,6 +1,6 @@
 package com.toyokawa.routes
 
-import com.toyokawa.domain.repositories.IGarbageRepository
+import com.toyokawa.data.repositories.IGarbageRepository
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondRedirect
 import io.ktor.server.routing.Route
