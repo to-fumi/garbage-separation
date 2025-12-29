@@ -3,7 +3,6 @@ package com.toyokawa.data.repositories
 import com.toyokawa.routes.dto.CreateGarbageDto
 import com.toyokawa.routes.dto.GarbageCategory
 import com.toyokawa.routes.dto.GarbageDto
-import com.toyokawa.routes.dto.LanguageCode
 import com.toyokawa.routes.dto.UpdateGarbageDto
 import io.ktor.util.logging.KtorSimpleLogger
 
@@ -26,7 +25,7 @@ class GarbageRepository : IGarbageRepository {
         TODO("Not yet implemented")
     }
 
-    override suspend fun update(id: Long, lang: LanguageCode, dto: UpdateGarbageDto) {
+    override suspend fun update(dto: UpdateGarbageDto) {
         TODO("Not yet implemented")
     }
 

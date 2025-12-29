@@ -35,6 +35,7 @@ tasks.named<JavaExec>("run") {
 }
 
 dependencies {
+    // Ktor
     implementation(libs.ktor.server.auth)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.netty)
@@ -47,25 +48,22 @@ dependencies {
     implementation(libs.ktor.serialization.kotlinx.json)
     implementation(libs.logback.classic)
 
-    // Koin
+    // Dependency Injection
     implementation(libs.ktor.koin)
     implementation(libs.ktor.koin.logger)
 
-    // Exposed ORM
+    // Database
     implementation(libs.exposed.core)
     implementation(libs.exposed.jdbc)
-    implementation(libs.h2)
-
-    // PostgreSQL driver
+    implementation(libs.exposed.kotlin.datetime)
     implementation(libs.postgres)
-
-    // HikariCP connection pooling
     implementation(libs.hikari)
 
     // OpenTelemetry
     implementation(libs.ktor.opentelemetry)
     implementation(libs.opentelemetry.sdk)
 
+    // Ktor Test
     testImplementation(libs.ktor.server.test.host)
     testImplementation(libs.kotlin.test)
     testImplementation(libs.kotlin.test.junit)

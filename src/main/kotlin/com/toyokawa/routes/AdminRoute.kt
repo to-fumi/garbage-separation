@@ -2,7 +2,7 @@ package com.toyokawa.routes
 
 import com.toyokawa.data.repositories.IGarbageRepository
 import com.toyokawa.routes.dto.CreateGarbageDto
-import com.toyokawa.routes.dto.LanguageCode
+import com.toyokawa.routes.dto.LanguageEnum
 import com.toyokawa.routes.dto.UpdateGarbageDto
 import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.JsonConvertException
@@ -53,7 +53,7 @@ fun Route.adminRoute() {
                 val id = call.parameters["id"]!!.toLong()
                 val lang = call.parameters["lang"] ?: "ja"
                 val garbage = call.receive<UpdateGarbageDto>()
-                repository.update(id, LanguageCode.fromCode(lang), garbage)
+                repository.update(garbage)
                 call.respond(HttpStatusCode.OK)
             } catch (_: IllegalStateException) {
                 call.respond(HttpStatusCode.BadRequest)

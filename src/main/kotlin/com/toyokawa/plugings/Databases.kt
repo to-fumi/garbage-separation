@@ -1,5 +1,7 @@
 package com.toyokawa.plugings
 
+import com.zaxxer.hikari.HikariConfig
+import com.zaxxer.hikari.HikariDataSource
 import io.ktor.server.application.Application
 import io.ktor.util.logging.KtorSimpleLogger
 import org.jetbrains.exposed.sql.Database
@@ -7,15 +9,19 @@ import org.jetbrains.exposed.sql.Database
 fun Application.configureDatabases() {
     val logger = KtorSimpleLogger(this::class.java.name)
 
-    val url = environment.config.property("envConfig.database.url").getString()
-    val user = environment.config.property("envConfig.database.user").getString()
-    val password = environment.config.property("envConfig.database.password").getString()
+    val config = HikariConfig().apply {
+        jdbcUrl = environment.config.property("envConfig.database.url").getString()
+        driverClassName = environment.config.property("envConfig.database.className").getString()
+        username = environment.config.property("envConfig.database.user").getString()
+        password = environment.config.property("envConfig.database.password").getString()
+        maximumPoolSize = 3
+        isReadOnly = false
+        transactionIsolation = "TRANSACTION_SERIALIZABLE"
+    }
 
-    logger.info("Connecting to database...")
-    val db = Database.connect(
-        url = url,
-        user = user,
-        password = password,
-    )
+    val dataSource = HikariDataSource(config)
+
+    val db = Database.connect(datasource = dataSource)
+
     logger.info("Connected to database.")
 }

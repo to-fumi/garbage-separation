@@ -12,7 +12,7 @@ data class GarbageDto(
 
 @Serializable
 data class CreateGarbageDto(
-    val languageCode: LanguageCode,
+    val languageEnum: LanguageEnum,
     val name: String,
     val disposalNotes: String? = null,
     val category: GarbageCategory,
@@ -21,18 +21,19 @@ data class CreateGarbageDto(
 @Serializable
 data class UpdateGarbageDto(
     val id: Long,
+    val languageEnum: LanguageEnum,
     val name: String,
     val disposalNotes: String? = null,
     val category: GarbageCategory,
 )
 
-enum class GarbageCategory {
-    BURNABLE,
-    NON_BURNABLE,
-    OVERSIZED,
-    RECYCLABLE,
-    HAZARDOUS,
-    NOT_ACCEPTED,
-    HOME_APPLIANCE_RECYCLING,
-    DIRECT_DELIVERY,
+enum class GarbageCategory(val id: Int) {
+    BURNABLE(1),
+    NON_BURNABLE(2),
+    OVERSIZED(3),
+    RECYCLABLE(4),
+    HAZARDOUS(5),
+    NOT_ACCEPTED(6),
+    HOME_APPLIANCE_RECYCLING(7),
+    DIRECT_DELIVERY(8),
 }
