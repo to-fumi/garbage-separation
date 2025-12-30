@@ -58,6 +58,8 @@ dependencies {
     implementation(libs.exposed.kotlin.datetime)
     implementation(libs.postgres)
     implementation(libs.hikari)
+    implementation(libs.exposed.migration.core)
+    implementation(libs.exposed.migration.jdbc)
 
     // OpenTelemetry
     implementation(libs.ktor.opentelemetry)
