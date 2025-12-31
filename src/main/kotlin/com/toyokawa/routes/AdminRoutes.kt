@@ -2,7 +2,6 @@ package com.toyokawa.routes
 
 import com.toyokawa.data.repositories.IGarbageRepository
 import com.toyokawa.routes.dto.CreateGarbageDto
-import com.toyokawa.routes.dto.LanguageEnum
 import com.toyokawa.routes.dto.UpdateGarbageDto
 import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.JsonConvertException
