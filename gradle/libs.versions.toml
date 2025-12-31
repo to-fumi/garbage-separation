@@ -8,6 +8,7 @@ opentelemetry = "1.55.0"
 exposed = "0.46.0"
 postgres = "42.7.1"
 hikari = "5.1.0"
+flyway = "11.20.0"
 
 [libraries]
 # Ktor
@@ -32,8 +33,8 @@ exposed-jdbc = { module = "org.jetbrains.exposed:exposed-jdbc", version.ref = "e
 exposed-kotlin-datetime = { module = "org.jetbrains.exposed:exposed-kotlin-datetime", version.ref = "exposed" }
 postgres = { module = "org.postgresql:postgresql", version.ref = "postgres" }
 hikari = { module = "com.zaxxer:HikariCP", version.ref = "hikari" }
-exposed-migration-core = { module = "org.jetbrains.exposed:exposed-migration-core", version.ref = "exposed" }
-exposed-migration-jdbc = { module = "org.jetbrains.exposed:exposed-migration-jdbc", version.ref = "exposed" }
+flyway-core = { module = "org.flywaydb:flyway-core", version.ref = "flyway" }
+flyway-postgres = { module = "org.flywaydb:flyway-database-postgresql", version.ref = "flyway" }
 
 # OpenTelemetry
 ktor-opentelemetry = { module = "io.opentelemetry.instrumentation:opentelemetry-ktor-3.0", version.ref = "ktor-opentelemetry" }
