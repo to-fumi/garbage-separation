@@ -13,7 +13,10 @@ envConfig:
   env:
     $?KTOR_ENV
   database:
+    host: $DB_HOST
+    port: $DB_PORT
+    name: $DB_NAME
+    schema: $DB_SCHEMA
     user: $DB_USER
     password: $DB_PASSWORD
-    url: $DB_URL
     className: $DB_DRIVER

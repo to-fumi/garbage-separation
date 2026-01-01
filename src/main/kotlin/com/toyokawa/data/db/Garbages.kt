@@ -3,8 +3,7 @@ package com.toyokawa.data.db
 import com.toyokawa.routes.dto.GarbageCategory
 import org.jetbrains.exposed.sql.ReferenceOption
 import org.jetbrains.exposed.sql.Table
-import org.jetbrains.exposed.sql.kotlin.datetime.CurrentDateTime
-import org.jetbrains.exposed.sql.kotlin.datetime.datetime
+import org.jetbrains.exposed.sql.kotlin.datetime.CurrentTimestamp
 import org.jetbrains.exposed.sql.kotlin.datetime.timestamp
 
 const val MAX_NAME_LENGTH = 100
@@ -22,7 +21,7 @@ object Garbages: Table("garbages") {
         onUpdate = ReferenceOption.CASCADE,
         fkName = "fk_language_codes"
     )
-    val createdAt = datetime("created_at").defaultExpression(CurrentDateTime)
+    val createdAt = timestamp("created_at").defaultExpression(CurrentTimestamp())
     val updatedAt = timestamp("updated_at").nullable()
 
     override val primaryKey = PrimaryKey(id)

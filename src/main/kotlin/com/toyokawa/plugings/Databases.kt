@@ -11,9 +11,15 @@ import org.jetbrains.exposed.sql.Database
 fun Application.configureDatabases() {
     val logger = KtorSimpleLogger(this::class.java.name)
 
+    val dbHost = environment.config.property("envConfig.database.host").getString()
+    val dbPort = environment.config.property("envConfig.database.port").getString()
+    val dbName = environment.config.property("envConfig.database.name").getString()
+    val dbSchema = environment.config.property("envConfig.database.schema").getString()
+
     val dataSource = HikariDataSource (
         HikariConfig().apply {
-            jdbcUrl = environment.config.property("envConfig.database.url").getString()
+            jdbcUrl = "jdbc:postgresql://$dbHost:$dbPort/$dbName"
+            schema = dbSchema
             driverClassName = environment.config.property("envConfig.database.className").getString()
             username = environment.config.property("envConfig.database.user").getString()
             password = environment.config.property("envConfig.database.password").getString()
