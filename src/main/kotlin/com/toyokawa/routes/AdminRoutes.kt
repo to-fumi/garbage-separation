@@ -32,7 +32,7 @@ fun Route.adminRoute() {
     route("/garbages") {
         get {
             val lang = LanguageEnum.fromCode(
-                call.queryParameters["lang"] ?: LanguageEnum.JA.toString()
+                call.queryParameters["lang"] ?: LanguageEnum.JA.code
             )
             val limit = call.queryParameters["limit"]
                 ?.toIntOrNull()
@@ -61,7 +61,7 @@ fun Route.adminRoute() {
         }
         get("/{id}") {
             val lang = LanguageEnum.fromCode(
-                call.queryParameters["lang"] ?: LanguageEnum.JA.toString()
+                call.queryParameters["lang"] ?: LanguageEnum.JA.code
             )
             val id = call.parameters["id"]!!.toLong()
 

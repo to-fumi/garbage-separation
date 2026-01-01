@@ -23,14 +23,14 @@ fun Route.userRoute() {
 
     route("/") {
         get {
-            call.respondRedirect("/garbage", permanent = true)
+            call.respondRedirect("/garbages", permanent = true)
         }
     }
 
     route("/garbages") {
         get {
             val lang = LanguageEnum.fromCode(
-                call.queryParameters["lang"] ?: LanguageEnum.JA.toString()
+                call.queryParameters["lang"] ?: LanguageEnum.JA.code
             )
             val limit = call.queryParameters["limit"]
                 ?.toIntOrNull()

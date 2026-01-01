@@ -12,7 +12,7 @@ const val MAX_DISPOSAL_NOTE_LENGTH = 255
 object Garbages: Table("garbages") {
     val id = long("id").autoIncrement()
     val name = varchar("name", MAX_NAME_LENGTH).uniqueIndex()
-    val disposalNote = varchar("disposalNote", MAX_DISPOSAL_NOTE_LENGTH).nullable()
+    val disposalNote = varchar("disposal_note", MAX_DISPOSAL_NOTE_LENGTH).nullable()
     val category = enumeration<GarbageCategory>("category")
     val languageId = reference(
         name = "language_id",
