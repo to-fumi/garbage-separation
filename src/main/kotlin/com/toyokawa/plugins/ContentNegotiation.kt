@@ -1,4 +1,4 @@
-package com.toyokawa.plugings
+package com.toyokawa.plugins
 
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.Application

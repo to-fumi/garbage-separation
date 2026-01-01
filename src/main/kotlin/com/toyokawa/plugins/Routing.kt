@@ -1,4 +1,4 @@
-package com.toyokawa.plugings
+package com.toyokawa.plugins
 
 import com.toyokawa.routes.adminRoute
 import com.toyokawa.routes.userRoute

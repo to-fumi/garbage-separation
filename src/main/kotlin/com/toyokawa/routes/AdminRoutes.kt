@@ -1,8 +1,15 @@
 package com.toyokawa.routes
 
 import com.toyokawa.data.repositories.IGarbageRepository
-import com.toyokawa.routes.dto.CreateGarbageDto
-import com.toyokawa.routes.dto.UpdateGarbageDto
+import com.toyokawa.routes.PaginationConfig.DEFAULT_LIMIT
+import com.toyokawa.routes.PaginationConfig.DEFAULT_OFFSET
+import com.toyokawa.routes.PaginationConfig.MAX_LIMIT
+import com.toyokawa.routes.PaginationConfig.MAX_OFFSET
+import com.toyokawa.routes.PaginationConfig.MIN_LIMIT
+import com.toyokawa.routes.PaginationConfig.MIN_OFFSET
+import com.toyokawa.routes.dto.GarbageCategory
+import com.toyokawa.routes.dto.LanguageEnum
+import com.toyokawa.routes.dto.UpsertGarbageDto
 import io.ktor.http.HttpStatusCode
 import io.ktor.serialization.JsonConvertException
 import io.ktor.server.request.receive
@@ -24,21 +31,50 @@ fun Route.adminRoute() {
 
     route("/garbages") {
         get {
-            val response = repository.findAll()
-            call.respond(response)
+            val lang = LanguageEnum.fromCode(
+                call.queryParameters["lang"] ?: LanguageEnum.JA.toString()
+            )
+            val limit = call.queryParameters["limit"]
+                ?.toIntOrNull()
+                ?.coerceIn(MIN_LIMIT, MAX_LIMIT)
+                ?: DEFAULT_LIMIT
+
+            val offset = call.queryParameters["offset"]
+                ?.toLongOrNull()
+                ?.coerceIn(MIN_OFFSET, MAX_OFFSET)
+                ?: DEFAULT_OFFSET
+
+            if (call.queryParameters["category"]!!.isNotEmpty()) {
+                val category = GarbageCategory.fromCategory(
+                    call.queryParameters["category"].toString()
+                )
+                val garbages = repository.findByCategory(lang, category, limit, offset)
+                call.respond(garbages)
+            }
 
             if (call.queryParameters["search"]!!.isNotEmpty()) {
                 call.respondText("Searching data with word ${call.queryParameters["search"]}")
             }
+
+            val garbages = repository.findAll(lang, limit, offset)
+            call.respond(garbages)
         }
         get("/{id}") {
+            val lang = LanguageEnum.fromCode(
+                call.queryParameters["lang"] ?: LanguageEnum.JA.toString()
+            )
             val id = call.parameters["id"]!!.toLong()
-            val response = repository.findById(id)
-            call.respond(response)
+
+            val response = repository.findById(lang, id)
+            if (response != null) {
+                call.respond(response)
+            } else {
+                call.respond(HttpStatusCode.NotFound)
+            }
         }
         post {
             try {
-                val garbage = call.receive<CreateGarbageDto>()
+                val garbage = call.receive<UpsertGarbageDto>()
                 repository.create(garbage)
                 call.respond(HttpStatusCode.NoContent)
             } catch (_: IllegalStateException) {
@@ -50,9 +86,8 @@ fun Route.adminRoute() {
         put("/{id}") {
             try {
                 val id = call.parameters["id"]!!.toLong()
-                val lang = call.parameters["lang"] ?: "ja"
-                val garbage = call.receive<UpdateGarbageDto>()
-                repository.update(garbage)
+                val garbage = call.receive<UpsertGarbageDto>()
+                repository.update(id, garbage)
                 call.respond(HttpStatusCode.OK)
             } catch (_: IllegalStateException) {
                 call.respond(HttpStatusCode.BadRequest)

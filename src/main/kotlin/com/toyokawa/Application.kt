@@ -1,13 +1,13 @@
 package com.toyokawa
 
-import com.toyokawa.plugings.configureAuthentication
-import com.toyokawa.plugings.configureCORS
-import com.toyokawa.plugings.configureContentNegotiation
-import com.toyokawa.plugings.configureDatabases
-import com.toyokawa.plugings.configureKoin
-import com.toyokawa.plugings.configureRequestValidation
-import com.toyokawa.plugings.configureRouting
-import com.toyokawa.plugings.configureStatus
+import com.toyokawa.plugins.configureAuthentication
+import com.toyokawa.plugins.configureCORS
+import com.toyokawa.plugins.configureContentNegotiation
+import com.toyokawa.plugins.configureDatabases
+import com.toyokawa.plugins.configureKoin
+import com.toyokawa.plugins.configureRequestValidation
+import com.toyokawa.plugins.configureRouting
+import com.toyokawa.plugins.configureStatus
 import io.ktor.server.application.Application
 import io.ktor.server.netty.EngineMain
 

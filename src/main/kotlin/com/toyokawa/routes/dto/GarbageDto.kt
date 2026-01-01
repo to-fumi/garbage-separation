@@ -11,29 +11,26 @@ data class GarbageDto(
 )
 
 @Serializable
-data class CreateGarbageDto(
+data class UpsertGarbageDto(
     val languageEnum: LanguageEnum,
     val name: String,
     val disposalNotes: String? = null,
     val category: GarbageCategory,
 )
 
-@Serializable
-data class UpdateGarbageDto(
-    val id: Long,
-    val languageEnum: LanguageEnum,
-    val name: String,
-    val disposalNotes: String? = null,
-    val category: GarbageCategory,
-)
+enum class GarbageCategory(val id: Int, val category: String) {
+    BURNABLE(1, "burnable"),
+    NON_BURNABLE(2, "non-burnable"),
+    OVERSIZED(3, "oversized"),
+    RECYCLABLE(4, "recyclable"),
+    HAZARDOUS(5, "hazardous"),
+    NOT_ACCEPTED(6, "not-accepted"),
+    HOME_APPLIANCE_RECYCLING(7, "home-appliance-recycling"),
+    DIRECT_DELIVERY(8, "direct-delivery");
 
-enum class GarbageCategory(val id: Int) {
-    BURNABLE(1),
-    NON_BURNABLE(2),
-    OVERSIZED(3),
-    RECYCLABLE(4),
-    HAZARDOUS(5),
-    NOT_ACCEPTED(6),
-    HOME_APPLIANCE_RECYCLING(7),
-    DIRECT_DELIVERY(8),
+    companion object {
+        fun fromCategory(category: String): GarbageCategory =
+            entries.find { it.category == category }
+                ?: throw IllegalArgumentException("Unknown category: $category")
+    }
 }

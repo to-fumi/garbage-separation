@@ -1,4 +1,4 @@
-package com.toyokawa.plugings
+package com.toyokawa.plugins
 
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource

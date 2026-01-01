@@ -1,4 +1,4 @@
-package com.toyokawa.plugings
+package com.toyokawa.plugins
 
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpMethod

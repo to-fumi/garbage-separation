@@ -1,4 +1,4 @@
-package com.toyokawa.plugings
+package com.toyokawa.plugins
 
 import com.toyokawa.data.repositories.GarbageRepository
 import com.toyokawa.data.repositories.IGarbageRepository

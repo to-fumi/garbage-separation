@@ -1,4 +1,4 @@
-package com.toyokawa.plugings
+package com.toyokawa.plugins
 
 import io.ktor.server.application.Application
 import io.ktor.server.application.install
