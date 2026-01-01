@@ -1,12 +1,12 @@
 package com.toyokawa.routes
 
 import com.toyokawa.data.repositories.IGarbageRepository
-import com.toyokawa.routes.PaginationConfig.DEFAULT_LIMIT
-import com.toyokawa.routes.PaginationConfig.DEFAULT_OFFSET
-import com.toyokawa.routes.PaginationConfig.MAX_LIMIT
-import com.toyokawa.routes.PaginationConfig.MAX_OFFSET
-import com.toyokawa.routes.PaginationConfig.MIN_LIMIT
-import com.toyokawa.routes.PaginationConfig.MIN_OFFSET
+import com.toyokawa.common.PaginationConfig.DEFAULT_LIMIT
+import com.toyokawa.common.PaginationConfig.DEFAULT_OFFSET
+import com.toyokawa.common.PaginationConfig.MAX_LIMIT
+import com.toyokawa.common.PaginationConfig.MAX_OFFSET
+import com.toyokawa.common.PaginationConfig.MIN_LIMIT
+import com.toyokawa.common.PaginationConfig.MIN_OFFSET
 import com.toyokawa.routes.dto.LanguageEnum
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondRedirect

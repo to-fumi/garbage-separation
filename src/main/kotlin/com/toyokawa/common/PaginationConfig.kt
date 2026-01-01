@@ -1,4 +1,4 @@
-package com.toyokawa.routes
+package com.toyokawa.common
 
 object PaginationConfig {
     const val DEFAULT_LIMIT = 10
