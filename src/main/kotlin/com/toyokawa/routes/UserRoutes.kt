@@ -30,7 +30,7 @@ fun Route.userRoute() {
     route("/garbages") {
         get {
             val lang = LanguageEnum.fromCode(
-                call.queryParameters["lang"] ?: LanguageEnum.JA.code
+                call.queryParameters["lang"] ?: LanguageEnum.JA.value
             )
             val limit = call.queryParameters["limit"]
                 ?.toIntOrNull()

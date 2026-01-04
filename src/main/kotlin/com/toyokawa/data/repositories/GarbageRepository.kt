@@ -26,14 +26,14 @@ class GarbageRepository : IGarbageRepository {
         return dbQuery {
             Garbages
                 .selectAll()
-                .where { Garbages.languageId eq lang.id }
+                .where { Garbages.languageCode eq lang.value }
                 .limit(limit, offset)
                 .map {
                     GarbageDto(
                         id = it[Garbages.id],
                         name = it[Garbages.name],
                         disposalNotes = it[Garbages.disposalNote],
-                        category = it[Garbages.category],
+                        category = GarbageCategory.fromCategory(it[Garbages.category]),
                     )
                 }
         }
@@ -48,7 +48,7 @@ class GarbageRepository : IGarbageRepository {
                         id = it[Garbages.id],
                         name = it[Garbages.name],
                         disposalNotes = it[Garbages.disposalNote],
-                        category = it[Garbages.category],
+                        category = GarbageCategory.fromCategory(it[Garbages.category]),
                     )
                 }
                 .singleOrNull()
@@ -64,15 +64,15 @@ class GarbageRepository : IGarbageRepository {
         return dbQuery {
             Garbages
                 .selectAll()
-                .andWhere { Garbages.languageId eq lang.id }
-                .andWhere { Garbages.category eq category }
+                .andWhere { Garbages.languageCode eq lang.value }
+                .andWhere { Garbages.category eq category.value }
                 .limit(limit, offset)
                 .map {
                     GarbageDto(
                         id = it[Garbages.id],
                         name = it[Garbages.name],
                         disposalNotes = it[Garbages.disposalNote],
-                        category = it[Garbages.category],
+                        category = GarbageCategory.fromCategory(it[Garbages.category]),
                     )
                 }
         }
@@ -83,8 +83,8 @@ class GarbageRepository : IGarbageRepository {
             Garbages.insert {
                 it[name] = dto.name
                 it[disposalNote] = dto.disposalNotes
-                it[category] = dto.category
-                it[languageId] = dto.languageEnum.id
+                it[category] = dto.category.value
+                it[languageCode] = dto.languageEnum.value
             }[Garbages.id]
         }
         logger.info("Successfully created garbage with id: $garbageId")
@@ -95,8 +95,8 @@ class GarbageRepository : IGarbageRepository {
             Garbages.update({ Garbages.id eq id}) {
                 it[name] = dto.name
                 it[disposalNote] = dto.disposalNotes
-                it[category] = dto.category
-                it[languageId] = dto.languageEnum.id
+                it[category] = dto.category.value
+                it[languageCode] = dto.languageEnum.value
                 it[updatedAt] = Clock.System.now()
             }
         }

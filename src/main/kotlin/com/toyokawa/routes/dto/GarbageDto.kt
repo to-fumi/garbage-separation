@@ -18,19 +18,19 @@ data class UpsertGarbageDto(
     val category: GarbageCategory,
 )
 
-enum class GarbageCategory(val id: Int, val category: String) {
-    BURNABLE(1, "burnable"),
-    NON_BURNABLE(2, "non-burnable"),
-    OVERSIZED(3, "oversized"),
-    RECYCLABLE(4, "recyclable"),
-    HAZARDOUS(5, "hazardous"),
-    NOT_ACCEPTED(6, "not-accepted"),
-    HOME_APPLIANCE_RECYCLING(7, "home-appliance-recycling"),
-    DIRECT_DELIVERY(8, "direct-delivery");
+enum class GarbageCategory(val value: String) {
+    BURNABLE("burnable"),
+    NON_BURNABLE("non-burnable"),
+    OVERSIZED("oversized"),
+    RECYCLABLE("recyclable"),
+    HAZARDOUS("hazardous"),
+    NOT_ACCEPTED("not-accepted"),
+    HOME_APPLIANCE_RECYCLING("home-appliance-recycling"),
+    DIRECT_DELIVERY("direct-delivery");
 
     companion object {
-        fun fromCategory(category: String): GarbageCategory =
-            entries.find { it.category == category }
-                ?: throw IllegalArgumentException("Unknown category: $category")
+        fun fromCategory(value: String): GarbageCategory =
+            entries.find { it.value == value }
+                ?: throw IllegalArgumentException("Unknown category: $value")
     }
 }

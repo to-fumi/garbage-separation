@@ -1,12 +1,12 @@
 package com.toyokawa.routes.dto
 
-enum class LanguageEnum(val id: Int, val code: String) {
-    JA(1, "ja"),
-    EN(2, "en");
+enum class LanguageEnum(val value: String) {
+    JA("ja"),
+    EN("en");
 
     companion object {
-        fun fromCode(code: String): LanguageEnum =
-            entries.find { it.code == code }
-                ?: throw IllegalArgumentException("Unknown language code $code")
+        fun fromCode(value: String): LanguageEnum =
+            entries.find { it.value == value }
+                ?: throw IllegalArgumentException("Unknown language code $value")
     }
 }
