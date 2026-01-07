@@ -615,12 +615,45 @@ INSERT INTO garbages (name, disposal_note, category, language_code, created_at) 
     ("ボルト", "金属製の缶に入れるなど散乱しないようにしてください。", "recyclable", "ja", CURRENT_TIMESTAMP)
     ("保冷剤", null, "burnable", "ja", CURRENT_TIMESTAMP)
     ("ホワイトボード", "指定袋に入れて口がしばれないものは粗大ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
---ほ
-    ("", null, "", "ja", CURRENT_TIMESTAMP)
-    ("", null, "", "ja", CURRENT_TIMESTAMP)
-
-
-
+--ま
+    ("麻雀牌（プラスチック製）", null, "burnable", "ja", CURRENT_TIMESTAMP)
+    ("麻雀マット", null, "oversized", "ja", CURRENT_TIMESTAMP)
+    ("マイク", "電池は抜いて出してください。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("マグネット、マグネットシート", null, "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("枕", "指定袋に入れて口がしばれないものは粗大ごみ。", "burnable", "ja", CURRENT_TIMESTAMP)
+    ("枕カバー", null, "burnable", "ja", CURRENT_TIMESTAMP)
+    ("マジックペン（金属製）", "プラスチック製は可燃ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("マッサージ機（いす型）", "ハンディ型は不燃ごみ。", "oversized", "ja", CURRENT_TIMESTAMP)
+    ("マッチ", "湿らせて着火しないようにしてください。", "burnable", "ja", CURRENT_TIMESTAMP)
+    ("マットレス", null, "oversized", "ja", CURRENT_TIMESTAMP)
+    ("窓付き封筒", "窓部分がビニールのものはその部分を取り除いてください。ビニールは可燃ごみ。", "recyclable", "ja", CURRENT_TIMESTAMP)
+    ("まな板", null, "burnable", "ja", CURRENT_TIMESTAMP)
+    ("マフラー（衣料品）", "１m以内に切断してください。", "burnable", "ja", CURRENT_TIMESTAMP)
+    ("マフラー（自動車部品）", "自動車販売、修理店に相談してください。", "not-accepted", "ja", CURRENT_TIMESTAMP)
+    ("万年筆", null, "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("万歩計", null, "non-burnable", "ja", CURRENT_TIMESTAMP)
+--み
+    ("ミキサー", null, "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("ミシン", "指定袋に入れて口がしばれないものは粗大ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("水着", null, "burnable", "ja", CURRENT_TIMESTAMP)
+    ("水差し", "プラスチック製は可燃ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("ミニカー（金属製）", "プラスチック製は可燃ごみ。", "recyclable", "ja", CURRENT_TIMESTAMP)
+    ("ミニコンポ", "指定袋に入れて口がしばれないものは粗大ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("耳かき（金属製）", "木製、プラスチック製は可燃ごみ。", "recyclable", "ja", CURRENT_TIMESTAMP)
+    ("ミルクの缶", "水ですすいでから出してください。", "recyclable", "ja", CURRENT_TIMESTAMP)
+--む
+    ("蒸し器（金属製）", "木製、プラスチック製は可燃ごみ。", "recyclable", "ja", CURRENT_TIMESTAMP)
+    ("虫取り網", null, "oversized", "ja", CURRENT_TIMESTAMP)
+    ("虫取りかご（金属製）", "プラスチック製は可燃ごみ。", "recyclable", "ja", CURRENT_TIMESTAMP)
+    ("虫めがね（ガラス製）", "プラスチック製は可燃ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("虫除けスプレー", "中身を使い切って出してください。ポンプ式は可燃ごみ。", "hazardous", "ja", CURRENT_TIMESTAMP)
+--め
+    ("めがね", "レンズがプラスチック製なら可燃ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+    ("めがねケース", null, "burnable", "ja", CURRENT_TIMESTAMP)
+    ("メガホン", null, "burnable", "ja", CURRENT_TIMESTAMP)
+    ("目薬の容器", null, "burnable", "ja", CURRENT_TIMESTAMP)
+    ("メジャー（金属製）", "プラスチック製は可燃ごみ。", "non-burnable", "ja", CURRENT_TIMESTAMP)
+--も
 
 
     ("", null, "", "ja", CURRENT_TIMESTAMP)
