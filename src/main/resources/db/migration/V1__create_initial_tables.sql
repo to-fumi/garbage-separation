@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS language_codes (
 );
 
 CREATE TABLE IF NOT EXISTS garbages (
-    id BIG SERIAL PRIMARY KEY,
+    id BIGSERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL UNIQUE,
     disposal_note VARCHAR(255),
     category VARCHAR(30) NOT NULL,
