@@ -1,4 +1,4 @@
-INSERT INTO garbages (name, disposal_note, category, language_code, created_at) VALUES
+INSERT INTO garbages(name, disposal_note, category, language_code, created_at) VALUES
     ('アイスピック', '先端にセロテープなどを巻きつけて刺さらないようにしてください。', 'non-burnable', 'ja', CURRENT_TIMESTAMP),
     ('アイスまくら', null, 'burnable', 'ja', CURRENT_TIMESTAMP),
     ('アイス冷却剤（冷却パック）', null, 'burnable', 'ja', CURRENT_TIMESTAMP),
@@ -235,7 +235,7 @@ INSERT INTO garbages (name, disposal_note, category, language_code, created_at) 
     ('サインペン', '柄が金属製のものは不燃ごみ。', 'burnable', 'ja', CURRENT_TIMESTAMP),
     ('酒のびん', null, 'recyclable', 'ja', CURRENT_TIMESTAMP),
     ('座卓', null, 'oversized', 'ja', CURRENT_TIMESTAMP),
-    ('雑がみ', 'ひもで十字に縛る\n※小さな紙類は、紙袋や封筒などに入れてひもで縛ってもよい', 'recyclable, 'ja', CURRENT_TIMESTAMP),
+    ('雑がみ', 'ひもで十字に縛る\n※小さな紙類は、紙袋や封筒などに入れてひもで縛ってもよい', 'recyclable', 'ja', CURRENT_TIMESTAMP),
     ('雑誌', 'ひもで十字に縛る', 'recyclable', 'ja', CURRENT_TIMESTAMP),
     ('殺虫剤スプレー缶', '中身を使い切って出してください。', 'hazardous', 'ja', CURRENT_TIMESTAMP),
     ('殺虫剤ビン', '中身を使い切って出してください。', 'non-burnable', 'ja', CURRENT_TIMESTAMP),
