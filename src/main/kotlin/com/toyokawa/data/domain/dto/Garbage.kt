@@ -1,21 +1,11 @@
-package com.toyokawa.routes.dto
+package com.toyokawa.data.domain.dto
 
-import kotlinx.serialization.Serializable
-
-@Serializable
-data class GarbageDto(
+data class Garbage(
     val id: Long,
     val name: String,
-    val disposalNotes: String? = null,
+    val disposalNotes: String?,
     val category: GarbageCategory,
-)
-
-@Serializable
-data class UpsertGarbageDto(
-    val languageEnum: LanguageEnum,
-    val name: String,
-    val disposalNotes: String? = null,
-    val category: GarbageCategory,
+    val languageCode: LanguageCode,
 )
 
 enum class GarbageCategory(val value: String) {
@@ -29,7 +19,7 @@ enum class GarbageCategory(val value: String) {
     DIRECT_DELIVERY("direct-delivery");
 
     companion object {
-        fun fromCategory(value: String): GarbageCategory =
+        fun fromValue(value: String): GarbageCategory =
             entries.find { it.value == value }
                 ?: throw IllegalArgumentException("Unknown category: $value")
     }

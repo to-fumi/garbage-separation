@@ -37,6 +37,7 @@ tasks.named<JavaExec>("run") {
 dependencies {
     // Ktor
     implementation(libs.ktor.server.auth)
+    implementation(libs.ktor.server.auth.jwt)
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.netty)
     implementation(libs.ktor.server.core)
@@ -60,6 +61,7 @@ dependencies {
     implementation(libs.hikari)
     implementation(libs.flyway.core)
     implementation(libs.flyway.postgres)
+    implementation(libs.jbcrypt)
 
     // OpenTelemetry
     implementation(libs.ktor.opentelemetry)

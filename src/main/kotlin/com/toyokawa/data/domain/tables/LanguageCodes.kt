@@ -1,4 +1,4 @@
-package com.toyokawa.data.db
+package com.toyokawa.data.domain.tables
 
 import org.jetbrains.exposed.sql.Table
 

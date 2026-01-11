@@ -7,7 +7,7 @@ import com.toyokawa.plugins.configureDatabases
 import com.toyokawa.plugins.configureKoin
 import com.toyokawa.plugins.configureRequestValidation
 import com.toyokawa.plugins.configureRouting
-import com.toyokawa.plugins.configureStatus
+import com.toyokawa.plugins.configureStatusPages
 import io.ktor.server.application.Application
 import io.ktor.server.netty.EngineMain
 
@@ -23,7 +23,7 @@ fun Application.module() {
     configureRequestValidation()
     configureKoin()
     configureRouting()
-    configureStatus()
+    configureStatusPages()
 
     // TODO: TBD
     // configureOpenTelemetry()
