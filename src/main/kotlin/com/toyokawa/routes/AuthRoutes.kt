@@ -9,6 +9,7 @@ import io.ktor.server.auth.authenticate
 import io.ktor.server.request.receive
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
+import io.ktor.server.routing.get
 import io.ktor.server.routing.post
 import org.koin.ktor.ext.get
 
@@ -22,9 +23,18 @@ fun Route.authRoute() {
     }
     authenticate("auth-jwt") {
         post("/register") {
+            val userId = call.requireUserId()
+            userRepository.requireAdmin(userId)
+
             val register = call.receive<RegisterRequest>()
             userRepository.create(register)
             call.respond(HttpStatusCode.Created)
+        }
+
+        get("/me") {
+            val userId = call.requireUserId()
+            val user = userRepository.findById(userId)
+            call.respond(user)
         }
     }
 }

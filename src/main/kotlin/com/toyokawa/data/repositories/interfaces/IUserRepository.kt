@@ -9,4 +9,5 @@ interface IUserRepository {
     suspend fun getToken(dto: LoginRequest): TokenResponse
     suspend fun create(dto: RegisterRequest)
     suspend fun findById(id: Int): UserResponse
+    suspend fun requireAdmin(id: Int)
 }

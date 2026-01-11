@@ -1,9 +1,12 @@
 package com.toyokawa.routes.extensions
 
+import com.toyokawa.data.exceptions.UnauthorizedException
 import com.toyokawa.data.exceptions.ValidationException
 import com.toyokawa.routes.extensions.PaginationConfig.DEFAULT_LIMIT
 import com.toyokawa.routes.extensions.PaginationConfig.DEFAULT_OFFSET
 import io.ktor.server.application.ApplicationCall
+import io.ktor.server.auth.jwt.JWTPrincipal
+import io.ktor.server.auth.principal
 
 object PaginationConfig {
     const val DEFAULT_LIMIT = 10
@@ -36,4 +39,9 @@ fun ApplicationCall.getOffsetParameter(): Long {
             throw ValidationException("Offset must be at most ${PaginationConfig.MAX_OFFSET}")
         else -> offset
     }
+}
+
+fun ApplicationCall.requireUserId(): Int {
+    val userId = principal<JWTPrincipal>()?.payload?.getClaim("userId")?.asInt()
+    return userId ?: throw UnauthorizedException("Unauthorized")
 }

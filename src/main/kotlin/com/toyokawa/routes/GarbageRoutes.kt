@@ -3,10 +3,11 @@ package com.toyokawa.routes
 import com.toyokawa.data.domain.dto.GarbageCategory
 import com.toyokawa.data.domain.dto.LanguageCode
 import com.toyokawa.data.repositories.interfaces.IGarbageRepository
+import com.toyokawa.data.repositories.interfaces.IUserRepository
 import com.toyokawa.routes.requests.UpsertGarbageRequest
 import com.toyokawa.routes.extensions.getLimitParameter
 import com.toyokawa.routes.extensions.getOffsetParameter
-import com.toyokawa.routes.extensions.requireAdmin
+import com.toyokawa.routes.extensions.requireUserId
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.auth.authenticate
 import io.ktor.server.request.receive
@@ -26,6 +27,7 @@ fun Route.garbageRoutes() {
     val logger = KtorSimpleLogger(this::class.java.name)
 
     val garbageRepository = get<IGarbageRepository>()
+    val userRepository = get<IUserRepository>()
 
     route("/") {
         get {
@@ -48,7 +50,6 @@ fun Route.garbageRoutes() {
     authenticate("auth-jwt") {
         route("/admin/garbages") {
             get {
-                call.requireAdmin()
                 val lang = LanguageCode.fromValue(call.queryParameters["lang"] ?: LanguageCode.JA.value)
                 val limit = call.getLimitParameter()
                 val offset = call.getOffsetParameter()
@@ -63,7 +64,6 @@ fun Route.garbageRoutes() {
                 call.respond(garbages)
             }
             get("/{id}") {
-                call.requireAdmin()
                 val lang = LanguageCode.fromValue(call.queryParameters["lang"] ?: LanguageCode.JA.value)
                 val id = call.parameters["id"]!!.toLong()
 
@@ -71,20 +71,26 @@ fun Route.garbageRoutes() {
                 call.respond(garbage)
             }
             post {
-                call.requireAdmin()
+                val userId = call.requireUserId()
+                userRepository.requireAdmin(userId)
+
                 val garbage = call.receive<UpsertGarbageRequest>()
                 garbageRepository.create(garbage)
                 call.respond(HttpStatusCode.NoContent)
             }
             put("/{id}") {
-                call.requireAdmin()
+                val userId = call.requireUserId()
+                userRepository.requireAdmin(userId)
+
                 val id = call.parameters["id"]!!.toLong()
                 val garbage = call.receive<UpsertGarbageRequest>()
                 garbageRepository.update(id, garbage)
                 call.respond(HttpStatusCode.OK)
             }
             delete("/{id}") {
-                call.requireAdmin()
+                val userId = call.requireUserId()
+                userRepository.requireAdmin(userId)
+
                 val id = call.parameters["id"]!!.toLong()
                 garbageRepository.delete(id)
                 call.respond(HttpStatusCode.NoContent)

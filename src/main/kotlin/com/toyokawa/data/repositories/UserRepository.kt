@@ -10,11 +10,13 @@ import com.toyokawa.routes.requests.RegisterRequest
 import com.toyokawa.data.repositories.interfaces.IUserRepository
 import com.toyokawa.routes.responses.TokenResponse
 import com.toyokawa.data.exceptions.ConflictException
+import com.toyokawa.data.exceptions.ForbiddenException
 import com.toyokawa.data.exceptions.NotFoundException
 import com.toyokawa.data.exceptions.UnauthorizedException
 import com.toyokawa.routes.responses.UserResponse
 import com.toyokawa.routes.responses.toResponse
 import io.ktor.util.logging.KtorSimpleLogger
+import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.or
 import org.jetbrains.exposed.sql.selectAll
@@ -89,5 +91,14 @@ class UserRepository(
         } ?: throw NotFoundException("User not found")
 
         return user.toResponse()
+    }
+
+    override suspend fun requireAdmin(id: Int) {
+        dbQuery {
+            Users
+                .selectAll()
+                .where { (Users.id eq id) and (Users.role eq Role.ADMIN.value) }
+                .singleOrNull()
+        } ?: throw ForbiddenException("Admin role required")
     }
 }
